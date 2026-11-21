@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111420;
+  font-family:system-ui, sans-serif;
+  overflow:hidden;
+}
+/* 背景渐变光斑 */
+.bg-blur{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+.blob{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.5;
+  animation: float 8s ease-in-out infinite alternate;
+}
+.blob1{
+  width:300px;height:300px;
+  background:#7c3aed;
+  top:10%;left:15%;
+  animation-delay:0s;
+}
+.blob2{
+  width:360px;height:360px;
+  background:#06b6d4;
+  bottom:10%;right:15%;
+  animation-delay:-2s;
+}
+.blob3{
+  width:240px;height:240px;
+  background:#ec4899;
+  top:40%;right:30%;
+  animation-delay:-4s;
+}
+@keyframes float{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(30px, -20px) scale(1.05)}
+}
+/* 毛玻璃卡片 */
+.card{
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:22px;
+  padding:48px 60px;
+  text-align:center;
+  box-shadow:0 8px 32px rgba(0,0,0,0.25);
+}
+/* 动态404文字 */
+.num404{
+  font-size:clamp(72px,14vw,120px);
+  font-weight:800;
+  background:linear-gradient(90deg,#7c3aed,#06b6d4,#ec4899);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation: shine 3s linear infinite;
+  margin-bottom:12px;
+}
+@keyframes shine{
+  0%{background-position:0% center}
+  100%{background-position:200% center}
+}
+.desc{
+  color:#d1d5db;
+  font-size:17px;
+  margin-bottom:32px;
+}
+.back-btn{
+  padding:12px 30px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.07);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s ease;
+  backdrop-filter:blur(8px);
+}
+.back-btn:hover{
+  background:rgba(255,255,255,0.15);
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.4);
+}
+</style>
+</head>
+<body>
+<div class="bg-blur">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+</div>
+<div class="card">
+  <div class="num404">404</div>
+  <p class="desc">这个页面不存在或已被删除。</p>
+  <button class="back-btn" onclick="history.back()">返回</button>
+</div>
+</body>
+</html>
